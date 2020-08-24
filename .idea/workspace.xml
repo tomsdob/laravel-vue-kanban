@@ -2,50 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74b27485-623d-4358-8af1-4c33a405cb71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../.idea/Documents.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../goodAff/.idea/goodAff.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/laravel-vue-kanban.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/phpunit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ConfirmPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ForgotPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/ResetPasswordController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/VerificationController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/css/app.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/mix-manifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/Test.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/confirm.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/email.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/passwords/reset.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/auth/verify.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../mozo.lv/.idea/mozo.lv.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../vayonlineapp/.idea/Affiliates-page.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../components-import-test/components/header.component.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../components-import-test/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../goodday.agency/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../goodday.agency/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../toms.gooddayfinance.com/dashboard/million.html" beforeDir="false" afterPath="$PROJECT_DIR$/../toms.gooddayfinance.com/dashboard/million.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../toms.gooddayfinance.com/slider-bootstrap-3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../toms.gooddayfinance.com/slider-bootstrap-3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../toms.gooddayfinance.com/ukrkrediti/indasdasd.html" beforeDir="false" afterPath="$PROJECT_DIR$/../toms.gooddayfinance.com/ukrkrediti/indasdasd.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../toms.gooddayfinance.com/ukrkrediti/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../toms.gooddayfinance.com/ukrkrediti/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../toms.gooddayfinance.com/ukrkrediti/map.html" beforeDir="false" afterPath="$PROJECT_DIR$/../toms.gooddayfinance.com/ukrkrediti/map.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vayonlineapp/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/../vayonlineapp/.env.example" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vayonlineapp/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../vayonlineapp/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vayonlineapp/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vayonlineapp/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vayonlineapp/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../vayonlineapp/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vayonlineapp/public/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vayonlineapp/resources/css/style.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vayonlineapp/resources/css/tailwind.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../vayonlineapp/tailwind.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/../vayonlineapp/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/TaskController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/Task.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/migrations/2020_08_24_103708_create_tasks_table.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/middleware('auth')" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/tasks/create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/tasks/edit.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/tasks/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -191,6 +159,12 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -214,7 +188,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598263317837</updated>
-      <workItem from="1598263319065" duration="1327000" />
+      <workItem from="1598263319065" duration="5641000" />
     </task>
     <servers />
   </component>
