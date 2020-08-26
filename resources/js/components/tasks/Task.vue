@@ -1,39 +1,48 @@
 <template>
   <draggable class="p-3 space-y-4 block rounded-lg bg-gray-100"
              :data-id="this.category"
+             :options="{ animation: 200 }"
              v-model="tasksData"
              group="tasks"
-             tag="ul"
+             tag="div"
              @change="log"
              @add="onAdd"
   >
-    <li class="p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white"
+    <div class="p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white"
         v-for="task in tasksData"
         :data-id="task.id"
         :data-title="task.title"
         :key="task.id"
     >
-      <div>
-        <span class="px-2 py-1 text-sm font-medium text-purple-800 leading-none bg-purple-400 rounded-full">{{ task.badge }}</span>
+      <div class="cursor-pointer"
+           v-on:click="toggleEdit(task.id)"
+      >
+        <div>
+          <span class="px-2 py-1 text-sm font-medium text-purple-800 leading-none bg-purple-400 rounded-full">{{ task.badge }}</span>
+        </div>
+        <span class="text-base font-medium text-gray-800 leading-5">{{ task.title }}</span>
+        <div class="flex items-center text-sm font-medium text-gray-500">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-1 w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>{{ moment(task.due_date) }}</span>
+        </div>
       </div>
-      <span class="text-base font-medium text-gray-800 leading-5">{{ task.title }}</span>
-      <div class="text-sm font-medium text-gray-500">
-        <span>{{ task.created_at }}</span>
-        <span>Due date</span>
-      </div>
-    </li>
+      <Edit :id="task.id" :title="task.title" :description="task.description" :due_date="task.due_date" :badge="task.badge" :category="task.category" />
+    </div>
   </draggable>
 </template>
 
 <script>
+import Edit from "./Edit";
 import draggable from "vuedraggable";
-import axios from "axios"
+import axios from "axios";
+import moment from "moment";
 
 export default {
   name: "Task",
   order: 1,
   components: {
-    draggable
+    draggable,
+    Edit
   },
   props: [
     "tasks",
@@ -41,20 +50,31 @@ export default {
   ],
   data: function () {
     return {
-      tasksData: this.tasks
+      // Setting the props as data
+      tasksData: this.tasks,
     }
   },
   methods: {
     log: function(event) {
+      // Checking on events happening
       window.console.log(event);
     },
-    onAdd: function(event, category) {
+    // Function that gets executed when task is added to a category
+    onAdd: function(event) {
+      // Fetching task id
       let id = event.item.getAttribute("data-id");
       axios.patch("/tasks/" + id, {
+        // Updating task title, category (title is just required)
         title: event.item.getAttribute("data-title"),
         category: event.to.getAttribute("data-id")
       })
       window.console.log(event);
+    },
+    moment: function(date) {
+      return moment(date).format('D MMM');
+    },
+    toggleEdit: function(id) {
+      document.getElementById('toggleEdit_' + id).classList.toggle("hidden");
     }
   },
   mounted() {

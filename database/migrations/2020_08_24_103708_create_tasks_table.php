@@ -21,7 +21,7 @@ class CreateTasksTable extends Migration
             $table->string('title');
             $table->string('description')->nullable();
             $table->string('badge')->nullable();
-            $table->boolean('completed')->default(false);
+            $table->date('due_date')->nullable();
             $table->timestamps();
         });
     }

@@ -5,6 +5,8 @@
       <div class="mb-4 block">
         <span class="text-base font-medium text-gray-500 leading-5 uppercase">{{ category.title }}</span>
       </div>
+      <!-- Category array passed as prop with the correct tasks -->
+      <!-- Category id passed as a prop for later axios use -->
       <Task :tasks="category.tasks" :category="category.id" :key="category.tasks.id" />
     </div>
   </div>
@@ -23,6 +25,7 @@ export default {
   ],
   data: function() {
     return {
+      // Category array
       categories: [
         {id: 0, title: 'To do', tasks:[]},
         {id: 1, title: 'In progress', tasks:[]},
@@ -31,6 +34,9 @@ export default {
     }
   },
   mounted () {
+    // Iterating over tasks array to check in which category it belongs in
+    // If task category id matches with category id, it gets added into
+    // the correct categories array
     for(let i = 0; i < this.tasks.length; i++){
       switch(this.tasks[i].category) {
         case 0:
@@ -49,7 +55,6 @@ export default {
           console.log("Couldn't find a category")
       }
     }
-    // console.log(this.categories);
   }
 }
 </script>
