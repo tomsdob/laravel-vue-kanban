@@ -1,7 +1,7 @@
 <div class="p-4 hidden flex lg:flex flex-col bg-gray-100 h-full" id="sidebar">
     <ul>
         <li>
-            <a href="#" class="block px-4 py-3 text-base font-medium text-gray-500 leading-5 hover:text-gray-800 rounded-lg w-full hover:bg-gray-300 transition-all duration-200">Tasks</a>
+            <a href="#" class="block p-3 text-base font-medium text-gray-500 leading-5 hover:text-gray-800 rounded-lg w-full hover:bg-gray-300 transition-all duration-200">Tasks</a>
         </li>
     </ul>
     <div class="mt-auto flex justify-start items-center">

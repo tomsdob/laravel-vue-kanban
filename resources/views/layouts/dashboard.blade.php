@@ -15,7 +15,7 @@
     <x-navbar></x-navbar>
     <div class="flex flex-1">
         <x-sidebar></x-sidebar>
-        <div class="flex-1">
+        <div class="p-7 flex-1">
             @yield('content')
         </div>
     </div>

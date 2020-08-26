@@ -1,6 +1,6 @@
 window.Vue = require('vue');
 
-Vue.component('test-component', require('./components/test.vue').default);
+Vue.component('categories', require('./components/tasks/Categories').default);
 
 const app = new Vue({
   el: '#app',

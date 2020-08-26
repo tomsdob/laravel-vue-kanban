@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74b27485-623d-4358-8af1-4c33a405cb71" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/View/Components/navbar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/View/Components/sidebar.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/navbar.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/components/sidebar.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/js/components/tasks/Task.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Test.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/tasks/Categories.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/components/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/components/sidebar.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/dashboard.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/index.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../vayonlineapp/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/../vayonlineapp/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../vayonlineapp/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../vayonlineapp/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../vayonlineapp/package-lock.json" beforeDir="false" />
@@ -194,7 +193,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598263317837</updated>
       <workItem from="1598263319065" duration="9589000" />
-      <workItem from="1598329973143" duration="10572000" />
+      <workItem from="1598329973143" duration="26814000" />
     </task>
     <servers />
   </component>
@@ -225,6 +224,10 @@
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
     <state width="1899" height="297" key="GridCell.Tab.0.right/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1598264294983" />
+    <state x="616" y="250" key="run.anything.popup" timestamp="1598420836091">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="616" y="250" key="run.anything.popup/1920.0.1920.1080/0.0.1920.1080@0.0.1920.1080" timestamp="1598420836091" />
     <state x="623" y="235" width="672" height="678" key="search.everywhere.popup" timestamp="1598269240391">
       <screen x="0" y="0" width="1920" height="1080" />
     </state>
