@@ -50,8 +50,8 @@ class TaskController extends Controller
         $task->update([
             'title' => $request->title,
             'description' => $request->description,
+            'category' => $request->category,
         ]);
-        return redirect(route('tasks.index'));
     }
 
     // Delete a task from the DB
