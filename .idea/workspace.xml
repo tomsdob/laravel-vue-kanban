@@ -11,8 +11,6 @@
       <change beforePath="$PROJECT_DIR$/resources/js/components/tasks/Categories.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/tasks/Categories.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/tasks/Edit.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/tasks/Edit.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/tasks/Task.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/tasks/Task.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/tasks/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/tasks/index.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../vayonlineapp/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/../vayonlineapp/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../vayonlineapp/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../vayonlineapp/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../vayonlineapp/package-lock.json" beforeDir="false" />
@@ -200,7 +198,7 @@
       <option name="presentableId" value="Default" />
       <updated>1598263317837</updated>
       <workItem from="1598263319065" duration="9589000" />
-      <workItem from="1598329973143" duration="56232000" />
+      <workItem from="1598329973143" duration="60291000" />
     </task>
     <servers />
   </component>

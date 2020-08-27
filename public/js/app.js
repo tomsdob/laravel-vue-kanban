@@ -2019,6 +2019,7 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     // Fetch tasks function
     this.fetchTasks();
+    console.log(this.tasks);
   }
 });
 
@@ -2141,6 +2142,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+//
 //
 //
 //
@@ -27844,8 +27846,8 @@ var render = function() {
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
-                      _vm.editTask(_vm.updateTask.id),
-                        _vm.toggleEdit(_vm.updateTask.id)
+                      _vm.editTask(_vm.updateTask.id)
+                      _vm.toggleEdit(_vm.updateTask.id)
                     }
                   }
                 },
@@ -27897,6 +27899,7 @@ var render = function() {
       attrs: {
         "data-id": this.category,
         options: { animation: 200 },
+        sort: true,
         group: "tasks",
         tag: "div"
       },

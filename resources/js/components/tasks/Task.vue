@@ -2,6 +2,7 @@
   <draggable class="p-3 space-y-4 block rounded-lg bg-gray-100"
              :data-id="this.category"
              :options="{ animation: 200 }"
+             :sort="true"
              v-model="tasksData"
              group="tasks"
              tag="div"

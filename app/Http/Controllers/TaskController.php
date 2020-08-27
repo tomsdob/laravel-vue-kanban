@@ -15,13 +15,13 @@ class TaskController extends Controller
     // Return an index view
     public function index()
     {
-        $tasks = auth()->user()->tasks->sortBy('completed');
+        $tasks = auth()->user()->tasks;
         return view('tasks.index', compact('tasks'));
     }
 
     public function fetch()
     {
-        return auth()->user()->tasks;
+        return auth()->user()->tasks->sortByDesc('due_date')->values()->all();
     }
 
     // Return a view with a create form

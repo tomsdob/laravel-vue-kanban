@@ -79,6 +79,8 @@ export default {
   mounted () {
     // Fetch tasks function
     this.fetchTasks();
+
+    console.log(this.tasks);
   }
 }
 </script>
