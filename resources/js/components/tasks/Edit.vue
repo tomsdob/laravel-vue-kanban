@@ -42,7 +42,7 @@
             <option value="vayonlineapp.vn">Vayonlineapp</option>
           </select>
         </label>
-        <button class="px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-blue-600 hover:bg-blue-800 transition-all duration-200 focus:outline-none focus:shadow-outline"
+        <button class="px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-primary hover:bg-primary_dark transition-all duration-200 focus:outline-none focus:shadow-outline"
                 type="button"
                 v-on:click="editTask(updateTask.id); toggleEdit(updateTask.id);"
         >

@@ -22,7 +22,7 @@ class TaskController extends Controller
     // Fetch API for loading the tasks
     public function fetch()
     {
-        return auth()->user()->tasks->sortByDesc('due_date')->values()->all();
+        return auth()->user()->tasks->sortBy('due_date')->values()->all();
     }
 
     // Return a view with a create form

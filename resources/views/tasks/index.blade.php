@@ -5,7 +5,7 @@
     {{-- Top menu --}}
     <div class="flex justify-end">
         <button onclick="document.getElementById('taskCreateModal').classList.toggle('hidden');"
-                class="px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-blue-600 hover:bg-blue-800 transition-all duration-200 focus:outline-none focus:shadow-outline"
+                class="px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-primary hover:bg-primary_dark transition-all duration-200 focus:outline-none focus:shadow-outline"
         >
             <span>Add</span>
             <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="plus w-6 h-6"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path></svg>
@@ -47,7 +47,7 @@
                     </select>
                 </label>
                 <button type="submit"
-                        class="px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-blue-600 hover:bg-blue-800 transition-all duration-200 focus:outline-none focus:shadow-outline"
+                        class="px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-primary hover:bg-primary_dark transition-all duration-200 focus:outline-none focus:shadow-outline"
                 >
                     Create
                 </button>

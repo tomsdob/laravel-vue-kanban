@@ -2178,6 +2178,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 
 
@@ -2218,12 +2223,15 @@ __webpack_require__.r(__webpack_exports__);
     moment: function moment(date) {
       return moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('D MMM');
     },
+    dueDate: function dueDate(date) {
+      return moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
+    },
     toggleEdit: function toggleEdit(id) {
       document.getElementById('toggleEdit_' + id).classList.toggle("hidden");
     }
   },
   mounted: function mounted() {
-    console.log(this.tasksData);
+    console.log(this.due_date, new Date());
   }
 });
 
@@ -27848,7 +27856,7 @@ var render = function() {
                 "button",
                 {
                   staticClass:
-                    "px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-blue-600 hover:bg-blue-800 transition-all duration-200 focus:outline-none focus:shadow-outline",
+                    "px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-primary hover:bg-primary_dark transition-all duration-200 focus:outline-none focus:shadow-outline",
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
@@ -27963,38 +27971,71 @@ var render = function() {
                 [_vm._v(_vm._s(task.title))]
               ),
               _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "flex items-center text-sm font-medium text-gray-500"
-                },
-                [
-                  _c(
-                    "svg",
+              task.due_date > _vm.dueDate(new Date())
+                ? _c(
+                    "div",
                     {
-                      staticClass: "mr-1 w-4 h-4",
-                      attrs: {
-                        fill: "none",
-                        viewBox: "0 0 24 24",
-                        stroke: "currentColor"
-                      }
+                      staticClass:
+                        "flex items-center text-sm font-medium text-gray-500"
                     },
                     [
-                      _c("path", {
-                        attrs: {
-                          "stroke-linecap": "round",
-                          "stroke-linejoin": "round",
-                          "stroke-width": "2",
-                          d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                        }
-                      })
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "mr-1 w-4 h-4",
+                          attrs: {
+                            fill: "none",
+                            viewBox: "0 0 24 24",
+                            stroke: "currentColor"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "stroke-width": "2",
+                              d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.moment(task.due_date)))])
                     ]
-                  ),
-                  _vm._v(" "),
-                  _c("span", [_vm._v(_vm._s(_vm.moment(task.due_date)))])
-                ]
-              )
+                  )
+                : _c(
+                    "div",
+                    {
+                      staticClass:
+                        "flex items-center text-sm font-medium text-red-500"
+                    },
+                    [
+                      _c(
+                        "svg",
+                        {
+                          staticClass: "mr-1 w-4 h-4",
+                          attrs: {
+                            fill: "none",
+                            viewBox: "0 0 24 24",
+                            stroke: "currentColor"
+                          }
+                        },
+                        [
+                          _c("path", {
+                            attrs: {
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "stroke-width": "2",
+                              d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                            }
+                          })
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("span", [_vm._v(_vm._s(_vm.moment(task.due_date)))])
+                    ]
+                  )
             ]
           ),
           _vm._v(" "),

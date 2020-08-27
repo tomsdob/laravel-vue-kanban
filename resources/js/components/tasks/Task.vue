@@ -24,7 +24,12 @@
           <span class="px-2 py-1 text-sm font-medium text-purple-800 leading-none bg-purple-400 rounded-full">{{ task.badge }}</span>
         </div>
         <span class="text-base font-medium text-gray-800 leading-5">{{ task.title }}</span>
-        <div class="flex items-center text-sm font-medium text-gray-500">
+        <!-- Checking if the due date is past today's date -->
+        <div v-if="task.due_date > dueDate(new Date())" class="flex items-center text-sm font-medium text-gray-500">
+          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-1 w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+          <span>{{ moment(task.due_date) }}</span>
+        </div>
+        <div v-else class="flex items-center text-sm font-medium text-red-500">
           <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-1 w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
           <span>{{ moment(task.due_date) }}</span>
         </div>
@@ -79,12 +84,15 @@ export default {
     moment: function(date) {
       return moment(date).format('D MMM');
     },
+    dueDate: function(date) {
+      return moment(date).format('YYYY-MM-DD');
+    },
     toggleEdit: function(id) {
       document.getElementById('toggleEdit_' + id).classList.toggle("hidden");
     }
   },
   mounted() {
-    console.log(this.tasksData);
+    console.log(this.due_date, new Date());
   }
 }
 </script>
