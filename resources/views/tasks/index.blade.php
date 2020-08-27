@@ -56,5 +56,5 @@
         <div class="absolute inset-0 w-full h-full bg-black bg-opacity-25 z-10" onclick="document.getElementById('taskCreateModal').classList.toggle('hidden');"></div>
     </div>
     {{-- Categories container --}}
-    <categories :tasks="{{ $tasks }}"></categories>
+    <categories></categories>
 @endsection

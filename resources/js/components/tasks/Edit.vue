@@ -1,34 +1,39 @@
 <template>
   <div class="hidden fixed inset-0 flex justify-center items-center w-full h-full z-10"
-       :id="'toggleEdit_' + this.id"
+       :id="'toggleEdit_' + updateTask.id"
   >
     <div class="p-4 rounded-lg bg-white z-20 w-full max-w-screen-sm">
       <h3 class="mb-4 text-xl font-medium text-gray-600 leading-5">Edit a task</h3>
-      <form method="POST" :action="'/tasks/' + this.id" class="flex flex-col space-y-4">
+      <form method="POST" :action="'/tasks/' + updateTask.id" class="flex flex-col space-y-4">
         <label>
           <input class="form-input w-full"
-                 v-model="updatedTitle"
                  placeholder="Task title..."
                  name="title"
                  type="text"
                  required
+                 v-model="updateTask.title"
           >
         </label>
         <label>
-          <textarea class="form-input w-full" id="ckeditor" placeholder="Task description..." name="description" v-model="updatedDescription"></textarea>
+          <textarea class="form-input w-full"
+                    id="ckeditor"
+                    placeholder="Task description..."
+                    name="description"
+                    v-model="updateTask.description"
+          ></textarea>
         </label>
         <label>
           <input class="px-3 py-3 text-base font-normal text-gray-400 leading-6 w-full border rounded-lg focus:outline-none focus:shadow-outline"
-                 v-model="updatedDue_date"
                  placeholder="Due date..."
                  name="due_date"
                  type="date"
+                 v-model="updateTask.due_date"
           >
         </label>
         <label>
           <select class="form-select w-full"
                   name="badge"
-                  v-model="updatedBadge"
+                  v-model="updateTask.badge"
           >
             <option value="">Project...</option>
             <option value="zaimo.com.ua">Zaimo</option>
@@ -39,13 +44,13 @@
         </label>
         <button class="px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-blue-600 hover:bg-blue-800 transition-all duration-200 focus:outline-none focus:shadow-outline"
                 type="button"
-                v-on:click="editTask(id)"
+                v-on:click="editTask(updateTask.id), toggleEdit(updateTask.id)"
         >
           Edit
         </button>
       </form>
     </div>
-    <div class="absolute inset-0 w-full h-full bg-black bg-opacity-25 z-10" v-on:click="toggleEdit(id)"></div>
+    <div class="absolute inset-0 w-full h-full bg-black bg-opacity-25 z-10" v-on:click="toggleEdit(updateTask.id)"></div>
   </div>
 </template>
 
@@ -55,24 +60,15 @@ import axios from "axios";
 export default {
   name: "Edit",
   props: [
-    "id",
-    "title",
-    "description",
-    "due_date",
-    "badge",
-    "category",
+    "task",
   ],
   data: function() {
     return {
-      updatedTitle: this.title,
-      updatedDescription: this.description,
-      updatedDue_date: this.due_date,
-      updatedBadge: this.badge,
-      updatedCategory: this.category,
+      updateTask: this.task,
     }
   },
   mounted() {
-    console.log(this.title);
+    console.log(this.updateTask);
   },
   methods: {
     toggleEdit: function(id) {
@@ -82,11 +78,11 @@ export default {
     editTask: function(id) {
       axios.patch("/tasks/" + id, {
         // Fetching the required variables
-        title: this.updatedTitle,
-        description: this.updatedDescription,
-        due_date: this.updatedDue_date,
-        badge: this.updatedBadge,
-        category: this.updatedCategory,
+        title: this.updateTask.title,
+        description: this.updateTask.description,
+        due_date: this.updateTask.due_date,
+        badge: this.updateTask.badge,
+        category: this.updateTask.category,
       })
       .then(function (response) {
         console.log(response.status);

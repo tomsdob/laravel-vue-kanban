@@ -1925,6 +1925,8 @@ module.exports = {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Task__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Task */ "./resources/js/components/tasks/Task.vue");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -1940,12 +1942,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Categories",
   components: {
     Task: _Task__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
-  props: ['tasks'],
   data: function data() {
     return {
       // Category array
@@ -1961,34 +1963,62 @@ __webpack_require__.r(__webpack_exports__);
         id: 2,
         title: 'Done',
         tasks: []
-      }]
+      }],
+      // Tasks array
+      tasks: {}
     };
   },
-  mounted: function mounted() {
+  methods: {
+    // Clear object
+    clearTasks: function clearTasks() {
+      for (var i = 0; i < this.categories.length; i++) {
+        this.categories[i].tasks.splice(0);
+      }
+    },
     // Iterating over tasks array to check in which category it belongs in
     // If task category id matches with category id, it gets added into
     // the correct categories array
-    for (var i = 0; i < this.tasks.length; i++) {
-      switch (this.tasks[i].category) {
-        case 0:
-          this.categories[0].tasks.push(this.tasks[i]);
-          console.log("A task has been added to 'To do'");
-          break;
+    sortTasks: function sortTasks() {
+      for (var i = 0; i < this.tasks.length; i++) {
+        switch (this.tasks[i].category) {
+          case 0:
+            this.categories[0].tasks.push(this.tasks[i]);
+            console.log("A task has been added to 'To do'");
+            break;
 
-        case 1:
-          this.categories[1].tasks.push(this.tasks[i]);
-          console.log("A task has been added to 'In progress'");
-          break;
+          case 1:
+            this.categories[1].tasks.push(this.tasks[i]);
+            console.log("A task has been added to 'In progress'");
+            break;
 
-        case 2:
-          this.categories[2].tasks.push(this.tasks[i]);
-          console.log("A task has been added to 'Done'");
-          break;
+          case 2:
+            this.categories[2].tasks.push(this.tasks[i]);
+            console.log("A task has been added to 'Done'");
+            break;
 
-        default:
-          console.log("Couldn't find a category");
+          default:
+            console.log("Couldn't find a category");
+        }
       }
+    },
+    // Fetching tasks from the DB via API
+    fetchTasks: function fetchTasks() {
+      var _this = this;
+
+      axios__WEBPACK_IMPORTED_MODULE_1___default.a.get('/tasks/fetch').then(function (response) {
+        _this.clearTasks();
+
+        _this.tasks = response.data;
+
+        _this.sortTasks();
+      })["catch"](function (error) {
+        console.log(error);
+      });
     }
+  },
+  mounted: function mounted() {
+    // Fetch tasks function
+    this.fetchTasks();
   }
 });
 
@@ -2056,21 +2086,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Edit",
-  props: ["id", "title", "description", "due_date", "badge", "category"],
+  props: ["task"],
   data: function data() {
     return {
-      updatedTitle: this.title,
-      updatedDescription: this.description,
-      updatedDue_date: this.due_date,
-      updatedBadge: this.badge,
-      updatedCategory: this.category
+      updateTask: this.task
     };
   },
   mounted: function mounted() {
-    console.log(this.title);
+    console.log(this.updateTask);
   },
   methods: {
     toggleEdit: function toggleEdit(id) {
@@ -2080,11 +2111,11 @@ __webpack_require__.r(__webpack_exports__);
     editTask: function editTask(id) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch("/tasks/" + id, {
         // Fetching the required variables
-        title: this.updatedTitle,
-        description: this.updatedDescription,
-        due_date: this.updatedDue_date,
-        badge: this.updatedBadge,
-        category: this.updatedCategory
+        title: this.updateTask.title,
+        description: this.updateTask.description,
+        due_date: this.updateTask.due_date,
+        badge: this.updateTask.badge,
+        category: this.updateTask.category
       }).then(function (response) {
         console.log(response.status);
       });
@@ -27637,7 +27668,7 @@ var render = function() {
     {
       staticClass:
         "hidden fixed inset-0 flex justify-center items-center w-full h-full z-10",
-      attrs: { id: "toggleEdit_" + this.id }
+      attrs: { id: "toggleEdit_" + _vm.updateTask.id }
     },
     [
       _c(
@@ -27654,7 +27685,7 @@ var render = function() {
             "form",
             {
               staticClass: "flex flex-col space-y-4",
-              attrs: { method: "POST", action: "/tasks/" + this.id }
+              attrs: { method: "POST", action: "/tasks/" + _vm.updateTask.id }
             },
             [
               _c("label", [
@@ -27663,8 +27694,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.updatedTitle,
-                      expression: "updatedTitle"
+                      value: _vm.updateTask.title,
+                      expression: "updateTask.title"
                     }
                   ],
                   staticClass: "form-input w-full",
@@ -27674,13 +27705,13 @@ var render = function() {
                     type: "text",
                     required: ""
                   },
-                  domProps: { value: _vm.updatedTitle },
+                  domProps: { value: _vm.updateTask.title },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.updatedTitle = $event.target.value
+                      _vm.$set(_vm.updateTask, "title", $event.target.value)
                     }
                   }
                 })
@@ -27692,8 +27723,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.updatedDescription,
-                      expression: "updatedDescription"
+                      value: _vm.updateTask.description,
+                      expression: "updateTask.description"
                     }
                   ],
                   staticClass: "form-input w-full",
@@ -27702,13 +27733,17 @@ var render = function() {
                     placeholder: "Task description...",
                     name: "description"
                   },
-                  domProps: { value: _vm.updatedDescription },
+                  domProps: { value: _vm.updateTask.description },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.updatedDescription = $event.target.value
+                      _vm.$set(
+                        _vm.updateTask,
+                        "description",
+                        $event.target.value
+                      )
                     }
                   }
                 })
@@ -27720,8 +27755,8 @@ var render = function() {
                     {
                       name: "model",
                       rawName: "v-model",
-                      value: _vm.updatedDue_date,
-                      expression: "updatedDue_date"
+                      value: _vm.updateTask.due_date,
+                      expression: "updateTask.due_date"
                     }
                   ],
                   staticClass:
@@ -27731,13 +27766,13 @@ var render = function() {
                     name: "due_date",
                     type: "date"
                   },
-                  domProps: { value: _vm.updatedDue_date },
+                  domProps: { value: _vm.updateTask.due_date },
                   on: {
                     input: function($event) {
                       if ($event.target.composing) {
                         return
                       }
-                      _vm.updatedDue_date = $event.target.value
+                      _vm.$set(_vm.updateTask, "due_date", $event.target.value)
                     }
                   }
                 })
@@ -27751,8 +27786,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.updatedBadge,
-                        expression: "updatedBadge"
+                        value: _vm.updateTask.badge,
+                        expression: "updateTask.badge"
                       }
                     ],
                     staticClass: "form-select w-full",
@@ -27767,9 +27802,13 @@ var render = function() {
                             var val = "_value" in o ? o._value : o.value
                             return val
                           })
-                        _vm.updatedBadge = $event.target.multiple
-                          ? $$selectedVal
-                          : $$selectedVal[0]
+                        _vm.$set(
+                          _vm.updateTask,
+                          "badge",
+                          $event.target.multiple
+                            ? $$selectedVal
+                            : $$selectedVal[0]
+                        )
                       }
                     }
                   },
@@ -27805,7 +27844,8 @@ var render = function() {
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
-                      return _vm.editTask(_vm.id)
+                      _vm.editTask(_vm.updateTask.id),
+                        _vm.toggleEdit(_vm.updateTask.id)
                     }
                   }
                 },
@@ -27821,7 +27861,7 @@ var render = function() {
           "absolute inset-0 w-full h-full bg-black bg-opacity-25 z-10",
         on: {
           click: function($event) {
-            return _vm.toggleEdit(_vm.id)
+            return _vm.toggleEdit(_vm.updateTask.id)
           }
         }
       })
@@ -27943,16 +27983,7 @@ var render = function() {
             ]
           ),
           _vm._v(" "),
-          _c("Edit", {
-            attrs: {
-              id: task.id,
-              title: task.title,
-              description: task.description,
-              due_date: task.due_date,
-              badge: task.badge,
-              category: task.category
-            }
-          })
+          _c("Edit", { attrs: { task: task } })
         ],
         1
       )

@@ -17,6 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/tasks/fetch', 'TaskController@fetch')->name('tasks.fetch');
 Route::resource('/tasks', 'TaskController');
 
 Auth::routes();

@@ -25,7 +25,7 @@
           <span>{{ moment(task.due_date) }}</span>
         </div>
       </div>
-      <Edit :id="task.id" :title="task.title" :description="task.description" :due_date="task.due_date" :badge="task.badge" :category="task.category" />
+      <Edit :task="task" />
     </div>
   </draggable>
 </template>

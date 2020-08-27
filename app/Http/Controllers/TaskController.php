@@ -19,6 +19,11 @@ class TaskController extends Controller
         return view('tasks.index', compact('tasks'));
     }
 
+    public function fetch()
+    {
+        return auth()->user()->tasks;
+    }
+
     // Return a view with a create form
     public function create()
     {
