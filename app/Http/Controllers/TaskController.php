@@ -19,6 +19,7 @@ class TaskController extends Controller
         return view('tasks.index', compact('tasks'));
     }
 
+    // Fetch API for loading the tasks
     public function fetch()
     {
         return auth()->user()->tasks->sortByDesc('due_date')->values()->all();

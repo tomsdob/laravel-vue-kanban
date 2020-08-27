@@ -12,6 +12,9 @@
     <div v-for="task in tasksData"
          :data-id="task.id"
          :data-title="task.title"
+         :data-description="task.description"
+         :data-badge="task.badge"
+         :data-due_date="task.due_date"
          :key="task.id"
     >
       <div class="p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white cursor-pointer"
@@ -66,6 +69,9 @@ export default {
       axios.patch("/tasks/" + id, {
         // Updating task title, category (title is just required)
         title: event.item.getAttribute("data-title"),
+        description: event.item.getAttribute("data-description"),
+        badge: event.item.getAttribute("data-badge"),
+        due_date: event.item.getAttribute("data-due_date"),
         category: event.to.getAttribute("data-id")
       })
       window.console.log(event);

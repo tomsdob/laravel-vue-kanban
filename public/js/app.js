@@ -2175,6 +2175,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 
 
 
@@ -2205,6 +2208,9 @@ __webpack_require__.r(__webpack_exports__);
       axios__WEBPACK_IMPORTED_MODULE_2___default.a.patch("/tasks/" + id, {
         // Updating task title, category (title is just required)
         title: event.item.getAttribute("data-title"),
+        description: event.item.getAttribute("data-description"),
+        badge: event.item.getAttribute("data-badge"),
+        due_date: event.item.getAttribute("data-due_date"),
         category: event.to.getAttribute("data-id")
       });
       window.console.log(event);
@@ -27917,7 +27923,13 @@ var render = function() {
         "div",
         {
           key: task.id,
-          attrs: { "data-id": task.id, "data-title": task.title }
+          attrs: {
+            "data-id": task.id,
+            "data-title": task.title,
+            "data-description": task.description,
+            "data-badge": task.badge,
+            "data-due_date": task.due_date
+          }
         },
         [
           _c(
