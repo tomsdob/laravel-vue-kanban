@@ -50,6 +50,8 @@ class TaskController extends Controller
         $task->update([
             'title' => $request->title,
             'description' => $request->description,
+            'due_date' => $request->due_date,
+            'badge' => $request->badge,
             'category' => $request->category,
         ]);
     }

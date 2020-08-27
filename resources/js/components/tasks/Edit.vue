@@ -7,7 +7,7 @@
       <form method="POST" :action="'/tasks/' + this.id" class="flex flex-col space-y-4">
         <label>
           <input class="form-input w-full"
-                 :value="this.title"
+                 v-model="updatedTitle"
                  placeholder="Task title..."
                  name="title"
                  type="text"
@@ -15,11 +15,11 @@
           >
         </label>
         <label>
-          <textarea class="form-input w-full" id="ckeditor" placeholder="Task description..." name="description">{{ this.description }}</textarea>
+          <textarea class="form-input w-full" id="ckeditor" placeholder="Task description..." name="description" v-model="updatedDescription"></textarea>
         </label>
         <label>
           <input class="px-3 py-3 text-base font-normal text-gray-400 leading-6 w-full border rounded-lg focus:outline-none focus:shadow-outline"
-                 :value="this.due_date"
+                 v-model="updatedDue_date"
                  placeholder="Due date..."
                  name="due_date"
                  type="date"
@@ -28,12 +28,13 @@
         <label>
           <select class="form-select w-full"
                   name="badge"
+                  v-model="updatedBadge"
           >
-            <option value="0">Project...</option>
-            <option>Zaimo</option>
-            <option>Zaimiplus</option>
-            <option>Zaimi365</option>
-            <option>Vayonlineapp</option>
+            <option value="">Project...</option>
+            <option value="zaimo.com.ua">Zaimo</option>
+            <option value="zaimiplus.com.ua">Zaimiplus</option>
+            <option value="zaimi365.com.ua">Zaimi365</option>
+            <option value="vayonlineapp.vn">Vayonlineapp</option>
           </select>
         </label>
         <button class="px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-blue-600 hover:bg-blue-800 transition-all duration-200 focus:outline-none focus:shadow-outline"
@@ -61,6 +62,15 @@ export default {
     "badge",
     "category",
   ],
+  data: function() {
+    return {
+      updatedTitle: this.title,
+      updatedDescription: this.description,
+      updatedDue_date: this.due_date,
+      updatedBadge: this.badge,
+      updatedCategory: this.category,
+    }
+  },
   mounted() {
     console.log(this.title);
   },
@@ -71,19 +81,15 @@ export default {
     // Editing a task
     editTask: function(id) {
       axios.patch("/tasks/" + id, {
-        // Updating task title, category (title is just required)
-        title: this.title,
-        description: this.description,
-        due_date: this.due_date,
-        badge: this.badge,
-        category: this.category,
+        // Fetching the required variables
+        title: this.updatedTitle,
+        description: this.updatedDescription,
+        due_date: this.updatedDue_date,
+        badge: this.updatedBadge,
+        category: this.updatedCategory,
       })
       .then(function (response) {
-        console.log(response.data);
         console.log(response.status);
-        console.log(response.statusText);
-        console.log(response.headers);
-        console.log(response.config);
       });
     },
   }

@@ -8,13 +8,12 @@
              @change="log"
              @add="onAdd"
   >
-    <div class="p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white"
-        v-for="task in tasksData"
-        :data-id="task.id"
-        :data-title="task.title"
-        :key="task.id"
+    <div v-for="task in tasksData"
+         :data-id="task.id"
+         :data-title="task.title"
+         :key="task.id"
     >
-      <div class="cursor-pointer"
+      <div class="p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white cursor-pointer"
            v-on:click="toggleEdit(task.id)"
       >
         <div>

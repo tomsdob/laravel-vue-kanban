@@ -2055,10 +2055,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Edit",
   props: ["id", "title", "description", "due_date", "badge", "category"],
+  data: function data() {
+    return {
+      updatedTitle: this.title,
+      updatedDescription: this.description,
+      updatedDue_date: this.due_date,
+      updatedBadge: this.badge,
+      updatedCategory: this.category
+    };
+  },
   mounted: function mounted() {
     console.log(this.title);
   },
@@ -2069,18 +2079,14 @@ __webpack_require__.r(__webpack_exports__);
     // Editing a task
     editTask: function editTask(id) {
       axios__WEBPACK_IMPORTED_MODULE_0___default.a.patch("/tasks/" + id, {
-        // Updating task title, category (title is just required)
-        title: this.title,
-        description: this.description,
-        due_date: this.due_date,
-        badge: this.badge,
-        category: this.category
+        // Fetching the required variables
+        title: this.updatedTitle,
+        description: this.updatedDescription,
+        due_date: this.updatedDue_date,
+        badge: this.updatedBadge,
+        category: this.updatedCategory
       }).then(function (response) {
-        console.log(response.data);
         console.log(response.status);
-        console.log(response.statusText);
-        console.log(response.headers);
-        console.log(response.config);
       });
     }
   }
@@ -2104,7 +2110,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
-//
 //
 //
 //
@@ -27654,6 +27659,14 @@ var render = function() {
             [
               _c("label", [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.updatedTitle,
+                      expression: "updatedTitle"
+                    }
+                  ],
                   staticClass: "form-input w-full",
                   attrs: {
                     placeholder: "Task title...",
@@ -27661,27 +27674,56 @@ var render = function() {
                     type: "text",
                     required: ""
                   },
-                  domProps: { value: this.title }
+                  domProps: { value: _vm.updatedTitle },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.updatedTitle = $event.target.value
+                    }
+                  }
                 })
               ]),
               _vm._v(" "),
               _c("label", [
-                _c(
-                  "textarea",
-                  {
-                    staticClass: "form-input w-full",
-                    attrs: {
-                      id: "ckeditor",
-                      placeholder: "Task description...",
-                      name: "description"
+                _c("textarea", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.updatedDescription,
+                      expression: "updatedDescription"
                     }
+                  ],
+                  staticClass: "form-input w-full",
+                  attrs: {
+                    id: "ckeditor",
+                    placeholder: "Task description...",
+                    name: "description"
                   },
-                  [_vm._v(_vm._s(this.description))]
-                )
+                  domProps: { value: _vm.updatedDescription },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.updatedDescription = $event.target.value
+                    }
+                  }
+                })
               ]),
               _vm._v(" "),
               _c("label", [
                 _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.updatedDue_date,
+                      expression: "updatedDue_date"
+                    }
+                  ],
                   staticClass:
                     "px-3 py-3 text-base font-normal text-gray-400 leading-6 w-full border rounded-lg focus:outline-none focus:shadow-outline",
                   attrs: {
@@ -27689,11 +27731,71 @@ var render = function() {
                     name: "due_date",
                     type: "date"
                   },
-                  domProps: { value: this.due_date }
+                  domProps: { value: _vm.updatedDue_date },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.updatedDue_date = $event.target.value
+                    }
+                  }
                 })
               ]),
               _vm._v(" "),
-              _vm._m(0),
+              _c("label", [
+                _c(
+                  "select",
+                  {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.updatedBadge,
+                        expression: "updatedBadge"
+                      }
+                    ],
+                    staticClass: "form-select w-full",
+                    attrs: { name: "badge" },
+                    on: {
+                      change: function($event) {
+                        var $$selectedVal = Array.prototype.filter
+                          .call($event.target.options, function(o) {
+                            return o.selected
+                          })
+                          .map(function(o) {
+                            var val = "_value" in o ? o._value : o.value
+                            return val
+                          })
+                        _vm.updatedBadge = $event.target.multiple
+                          ? $$selectedVal
+                          : $$selectedVal[0]
+                      }
+                    }
+                  },
+                  [
+                    _c("option", { attrs: { value: "" } }, [
+                      _vm._v("Project...")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "zaimo.com.ua" } }, [
+                      _vm._v("Zaimo")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "zaimiplus.com.ua" } }, [
+                      _vm._v("Zaimiplus")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "zaimi365.com.ua" } }, [
+                      _vm._v("Zaimi365")
+                    ]),
+                    _vm._v(" "),
+                    _c("option", { attrs: { value: "vayonlineapp.vn" } }, [
+                      _vm._v("Vayonlineapp")
+                    ])
+                  ]
+                )
+              ]),
               _vm._v(" "),
               _c(
                 "button",
@@ -27726,30 +27828,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("label", [
-      _c(
-        "select",
-        { staticClass: "form-select w-full", attrs: { name: "badge" } },
-        [
-          _c("option", { attrs: { value: "0" } }, [_vm._v("Project...")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Zaimo")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Zaimiplus")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Zaimi365")]),
-          _vm._v(" "),
-          _c("option", [_vm._v("Vayonlineapp")])
-        ]
-      )
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -27795,15 +27874,14 @@ var render = function() {
         "div",
         {
           key: task.id,
-          staticClass:
-            "p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white",
           attrs: { "data-id": task.id, "data-title": task.title }
         },
         [
           _c(
             "div",
             {
-              staticClass: "cursor-pointer",
+              staticClass:
+                "p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white cursor-pointer",
               on: {
                 click: function($event) {
                   return _vm.toggleEdit(task.id)
