@@ -1961,6 +1961,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1988,7 +1995,8 @@ __webpack_require__.r(__webpack_exports__);
         tasks: []
       }],
       // Tasks array
-      tasks: {}
+      tasks: {},
+      loading: true
     };
   },
   methods: {
@@ -2034,6 +2042,8 @@ __webpack_require__.r(__webpack_exports__);
         _this.tasks = response.data;
 
         _this.sortTasks();
+
+        _this.loading = false;
       })["catch"](function (error) {
         console.log(error);
       });
@@ -27684,63 +27694,114 @@ var render = function() {
   return _c(
     "div",
     { staticClass: "grid md:grid-cols-3 gap-y-8 md:gap-y-0 md:gap-x-8" },
-    _vm._l(_vm.categories, function(category) {
-      return _c(
+    [
+      _vm._l(_vm.categories, function(category) {
+        return _c(
+          "div",
+          {
+            key: category.id,
+            staticClass: "overflow-x-scroll md:overflow-x-auto"
+          },
+          [
+            _c(
+              "div",
+              {
+                staticClass:
+                  "mb-4 space-x-4 flex justify-start items-center block"
+              },
+              [
+                category.emoji
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "p-2 flex justify-center items-center bg-white rounded-full shadow-md"
+                      },
+                      [_c("span", [_vm._v(_vm._s(category.emoji))])]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                category.title
+                  ? _c(
+                      "span",
+                      {
+                        staticClass:
+                          "text-base font-medium text-gray-800 leading-5 uppercase"
+                      },
+                      [_vm._v(_vm._s(category.title))]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "text-base font-medium text-gray-500 leading-5 uppercase"
+                  },
+                  [_vm._v(_vm._s(category.tasks.length))]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("Task", {
+              key: category.tasks.id,
+              attrs: { tasks: category.tasks, category: category.id }
+            })
+          ],
+          1
+        )
+      }),
+      _vm._v(" "),
+      _c(
         "div",
         {
-          key: category.id,
-          staticClass: "overflow-x-scroll md:overflow-x-auto"
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.loading,
+              expression: "loading"
+            }
+          ],
+          staticClass:
+            "fixed flex justify-center items-center w-screen h-screen inset-0 bg-white z-50"
         },
         [
           _c(
-            "div",
+            "svg",
             {
-              staticClass:
-                "mb-4 space-x-4 flex justify-start items-center block"
+              staticClass: "relative animate-spin h-8 w-8 text-primary",
+              attrs: {
+                xmlns: "http://www.w3.org/2000/svg",
+                fill: "none",
+                viewBox: "0 0 24 24"
+              }
             },
             [
-              category.emoji
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "p-2 flex justify-center items-center bg-white rounded-full shadow-md"
-                    },
-                    [_c("span", [_vm._v(_vm._s(category.emoji))])]
-                  )
-                : _vm._e(),
+              _c("circle", {
+                staticClass: "opacity-25",
+                attrs: {
+                  cx: "12",
+                  cy: "12",
+                  r: "10",
+                  stroke: "currentColor",
+                  "stroke-width": "3"
+                }
+              }),
               _vm._v(" "),
-              category.title
-                ? _c(
-                    "span",
-                    {
-                      staticClass:
-                        "text-base font-medium text-gray-800 leading-5 uppercase"
-                    },
-                    [_vm._v(_vm._s(category.title))]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "text-base font-medium text-gray-500 leading-5 uppercase"
-                },
-                [_vm._v(_vm._s(category.tasks.length))]
-              )
+              _c("path", {
+                attrs: {
+                  fill: "currentColor",
+                  d:
+                    "M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                }
+              })
             ]
-          ),
-          _vm._v(" "),
-          _c("Task", {
-            key: category.tasks.id,
-            attrs: { tasks: category.tasks, category: category.id }
-          })
-        ],
-        1
+          )
+        ]
       )
-    }),
-    0
+    ],
+    2
   )
 }
 var staticRenderFns = []
