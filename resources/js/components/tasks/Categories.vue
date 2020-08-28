@@ -1,13 +1,13 @@
 <template>
   <!-- Category container -->
-  <div class="grid grid-cols-3 gap-x-8">
-    <div v-for="category in categories" :key="category.id">
+  <div class="grid md:grid-cols-3 gap-y-8 md:gap-y-0 md:gap-x-8">
+    <div class="overflow-x-scroll" v-for="category in categories" :key="category.id">
       <div class="mb-4 block">
         <span class="text-base font-medium text-gray-500 leading-5 uppercase">{{ category.title }}</span>
       </div>
       <!-- Category array passed as prop with the correct tasks -->
       <!-- Category id passed as a prop for later axios use -->
-      <Task :tasks="category.tasks" :category="category.id" :key="category.tasks.id" />
+        <Task :tasks="category.tasks" :category="category.id" :key="category.tasks.id"/>
     </div>
   </div>
 </template>

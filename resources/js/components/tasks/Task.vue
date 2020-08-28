@@ -1,5 +1,5 @@
 <template>
-  <draggable class="p-3 space-y-4 block rounded-lg bg-gray-100"
+  <draggable class="p-3 pb-8 md:pb-3 space-x-4 md:space-x-0 md:space-y-4 flex md:block md:rounded-lg md:bg-gray-100"
              :data-id="this.category"
              :options="{ animation: 200 }"
              :sort="true"
@@ -17,10 +17,10 @@
          :data-due_date="task.due_date"
          :key="task.id"
     >
-      <div class="p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white cursor-pointer"
+      <div class="p-3 flex flex-col justify-start items-start rounded-lg bg-white border md:border-none cursor-pointer w-64 md:w-auto h-full"
            v-on:click="toggleEdit(task.id)"
       >
-        <div class="flex justify-between items-center">
+        <div class="mb-3 flex justify-between items-center">
           <span class="px-2 p-1 text-xs font-medium text-purple-800 leading-none uppercase bg-purple-200 rounded-lg">{{ task.badge }}</span>
           <div class="flex justify-end items-center">
             <div class="w-6 h-6">
@@ -31,15 +31,20 @@
             </div>
           </div>
         </div>
-        <span class="text-base font-medium text-gray-800 leading-5">{{ task.title }}</span>
+        <span class="mb-3 text-base font-medium text-gray-800 leading-5">{{ task.title }}</span>
         <!-- Checking if the due date is past today's date -->
-        <div v-if="task.due_date > dueDate(new Date())" class="flex items-center text-sm font-medium text-gray-500">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-1 w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span>{{ moment(task.due_date) }}</span>
-        </div>
-        <div v-else class="flex items-center text-sm font-medium text-red-500">
-          <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-1 w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-          <span>{{ moment(task.due_date) }}</span>
+        <div class="mt-auto">
+          <div v-if="task.due_date === null" class="flex items-center text-sm font-medium text-gray-500">
+            <span>No due date</span>
+          </div>
+          <div v-else-if="task.due_date >= dueDate(new Date())" class="flex items-center text-sm font-medium text-gray-500">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-1 w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>{{ moment(task.due_date) }}</span>
+          </div>
+          <div v-else class="flex items-center text-sm font-medium text-red-500">
+            <svg fill="none" viewBox="0 0 24 24" stroke="currentColor" class="mr-1 w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <span>{{ moment(task.due_date) }}</span>
+          </div>
         </div>
       </div>
       <Edit :task="task" />

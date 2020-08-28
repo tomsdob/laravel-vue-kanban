@@ -10,15 +10,26 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="antialiased font-sans text-gray-800 h-full">
-<div id="app" class="flex flex-col h-full">
+<body class="antialiased font-poppins text-gray-800 h-full">
+<div id="app" class="flex flex-col h-full max-h-full">
     <x-navbar></x-navbar>
-    <div class="flex flex-1">
+    <div class="flex flex-1 max-w-full max-h-full">
         <x-sidebar></x-sidebar>
-        <div class="p-6 flex-1">
+        <div class="p-6 flex-1 max-w-full overflow-x-hidden md:overflow-x-auto" id="main">
             @yield('content')
         </div>
     </div>
 </div>
+<script>
+    function getMainMargin () {
+      const navbar = document.getElementById("navbar");
+      const sidebar = document.getElementById("sidebar");
+      document.getElementById("main").style.marginTop = navbar.offsetHeight + "px";
+      document.getElementById("main").style.marginLeft = sidebar.offsetWidth + "px";
+      sidebar.style.paddingTop = navbar.offsetHeight + "px";
+    }
+    window.onload = getMainMargin;
+    window.onresize = getMainMargin;
+</script>
 </body>
 </html>

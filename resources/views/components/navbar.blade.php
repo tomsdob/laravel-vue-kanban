@@ -1,4 +1,4 @@
-<nav class="px-8 py-4 text-white bg-primary">
+<nav class="fixed top-0 inset-x-0 px-8 py-4 text-white bg-primary z-10" id="navbar">
     <div class="flex justify-between items-center">
         <div class="flex items-center">
             <span class="text-2xl font-medium leading-5">{{ config('app.name', 'Laravel') }}</span>

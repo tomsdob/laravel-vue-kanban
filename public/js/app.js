@@ -2105,6 +2105,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2166,6 +2174,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+//
+//
+//
+//
+//
 //
 //
 //
@@ -27661,11 +27674,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "grid grid-cols-3 gap-x-8" },
+    { staticClass: "grid md:grid-cols-3 gap-y-8 md:gap-y-0 md:gap-x-8" },
     _vm._l(_vm.categories, function(category) {
       return _c(
         "div",
-        { key: category.id },
+        { key: category.id, staticClass: "overflow-x-scroll" },
         [
           _c("div", { staticClass: "mb-4 block" }, [
             _c(
@@ -27715,7 +27728,7 @@ var render = function() {
     "div",
     {
       staticClass:
-        "hidden fixed inset-0 flex justify-center items-center w-full h-full z-10",
+        "p-4 md:p-0 hidden fixed inset-0 flex justify-center items-center w-full h-full z-10",
       attrs: { id: "toggleEdit_" + _vm.updateTask.id }
     },
     [
@@ -27725,7 +27738,7 @@ var render = function() {
         [
           _c(
             "h3",
-            { staticClass: "mb-4 text-xl font-medium text-gray-600 leading-5" },
+            { staticClass: "mb-6 text-xl font-medium text-gray-800 leading-5" },
             [_vm._v("Edit a task")]
           ),
           _vm._v(" "),
@@ -27737,6 +27750,15 @@ var render = function() {
             },
             [
               _c("label", [
+                _c(
+                  "span",
+                  {
+                    staticClass:
+                      "mb-2 block text-base font-normal text-gray-800 leading-5"
+                  },
+                  [_vm._v("Title")]
+                ),
+                _vm._v(" "),
                 _c("input", {
                   directives: [
                     {
@@ -27765,109 +27787,156 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("ckeditor", {
-                attrs: { editor: _vm.editor, config: _vm.editorConfig },
-                model: {
-                  value: _vm.updateTask.description,
-                  callback: function($$v) {
-                    _vm.$set(_vm.updateTask, "description", $$v)
-                  },
-                  expression: "updateTask.description"
-                }
-              }),
-              _vm._v(" "),
-              _c("label", [
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                { staticClass: "mt-4" },
+                [
+                  _c(
+                    "span",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.updateTask.due_date,
-                      expression: "updateTask.due_date"
+                      staticClass:
+                        "mb-2 block text-base font-normal text-gray-800 leading-5"
+                    },
+                    [_vm._v("Description")]
+                  ),
+                  _vm._v(" "),
+                  _c("ckeditor", {
+                    attrs: { editor: _vm.editor, config: _vm.editorConfig },
+                    model: {
+                      value: _vm.updateTask.description,
+                      callback: function($$v) {
+                        _vm.$set(_vm.updateTask, "description", $$v)
+                      },
+                      expression: "updateTask.description"
                     }
-                  ],
-                  staticClass:
-                    "px-3 py-3 text-base font-normal text-gray-400 leading-6 w-full border rounded-lg focus:outline-none focus:shadow-outline",
-                  attrs: {
-                    placeholder: "Due date...",
-                    name: "due_date",
-                    type: "date"
-                  },
-                  domProps: { value: _vm.updateTask.due_date },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(_vm.updateTask, "due_date", $event.target.value)
-                    }
-                  }
-                })
-              ]),
+                  })
+                ],
+                1
+              ),
               _vm._v(" "),
-              _c("label", [
-                _c(
-                  "select",
-                  {
-                    directives: [
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "grid md:grid-cols-2 md:gap-x-4 gap-y-4 md:gap-y-0"
+                },
+                [
+                  _c("label", [
+                    _c(
+                      "span",
                       {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.updateTask.badge,
-                        expression: "updateTask.badge"
+                        staticClass:
+                          "mb-2 block text-base font-normal text-gray-800 leading-5"
+                      },
+                      [_vm._v("Due date")]
+                    ),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.updateTask.due_date,
+                          expression: "updateTask.due_date"
+                        }
+                      ],
+                      staticClass:
+                        "px-3 py-2 text-base font-normal text-gray-800 w-full border rounded-lg focus:outline-none focus:shadow-outline",
+                      attrs: {
+                        placeholder: "Due date...",
+                        name: "due_date",
+                        type: "date"
+                      },
+                      domProps: { value: _vm.updateTask.due_date },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.updateTask,
+                            "due_date",
+                            $event.target.value
+                          )
+                        }
                       }
-                    ],
-                    staticClass: "form-select w-full",
-                    attrs: { name: "badge" },
-                    on: {
-                      change: function($event) {
-                        var $$selectedVal = Array.prototype.filter
-                          .call($event.target.options, function(o) {
-                            return o.selected
-                          })
-                          .map(function(o) {
-                            var val = "_value" in o ? o._value : o.value
-                            return val
-                          })
-                        _vm.$set(
-                          _vm.updateTask,
-                          "badge",
-                          $event.target.multiple
-                            ? $$selectedVal
-                            : $$selectedVal[0]
-                        )
-                      }
-                    }
-                  },
-                  [
-                    _c("option", { attrs: { value: "" } }, [
-                      _vm._v("Project...")
-                    ]),
+                    })
+                  ]),
+                  _vm._v(" "),
+                  _c("label", [
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "mb-2 block text-base font-normal text-gray-800 leading-5"
+                      },
+                      [_vm._v("Badge/project")]
+                    ),
                     _vm._v(" "),
-                    _c("option", { attrs: { value: "zaimo.com.ua" } }, [
-                      _vm._v("Zaimo")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "zaimiplus.com.ua" } }, [
-                      _vm._v("Zaimiplus")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "zaimi365.com.ua" } }, [
-                      _vm._v("Zaimi365")
-                    ]),
-                    _vm._v(" "),
-                    _c("option", { attrs: { value: "vayonlineapp.vn" } }, [
-                      _vm._v("Vayonlineapp")
-                    ])
-                  ]
-                )
-              ]),
+                    _c(
+                      "select",
+                      {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.updateTask.badge,
+                            expression: "updateTask.badge"
+                          }
+                        ],
+                        staticClass: "form-select w-full",
+                        attrs: { name: "badge" },
+                        on: {
+                          change: function($event) {
+                            var $$selectedVal = Array.prototype.filter
+                              .call($event.target.options, function(o) {
+                                return o.selected
+                              })
+                              .map(function(o) {
+                                var val = "_value" in o ? o._value : o.value
+                                return val
+                              })
+                            _vm.$set(
+                              _vm.updateTask,
+                              "badge",
+                              $event.target.multiple
+                                ? $$selectedVal
+                                : $$selectedVal[0]
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _c("option", { attrs: { value: "" } }, [
+                          _vm._v("Project...")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "zaimo.com.ua" } }, [
+                          _vm._v("Zaimo")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "zaimiplus.com.ua" } }, [
+                          _vm._v("Zaimiplus")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "zaimi365.com.ua" } }, [
+                          _vm._v("Zaimi365")
+                        ]),
+                        _vm._v(" "),
+                        _c("option", { attrs: { value: "vayonlineapp.vn" } }, [
+                          _vm._v("Vayonlineapp")
+                        ])
+                      ]
+                    )
+                  ])
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "button",
                 {
                   staticClass:
-                    "px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-primary hover:bg-primary_dark transition-all duration-200 focus:outline-none focus:shadow-outline",
+                    "px-3 py-2 flex justify-center items-center text-base font-medium text-white text-center rounded-lg bg-primary hover:bg-primary_dark transition duration-300 transform hover:-translate-y-1 hover:shadow-md ease focus:outline-none focus:shadow-outline",
                   attrs: { type: "button" },
                   on: {
                     click: function($event) {
@@ -27878,8 +27947,7 @@ var render = function() {
                 },
                 [_vm._v("\n        Edit\n      ")]
               )
-            ],
-            1
+            ]
           )
         ]
       ),
@@ -27921,7 +27989,8 @@ var render = function() {
   return _c(
     "draggable",
     {
-      staticClass: "p-3 space-y-4 block rounded-lg bg-gray-100",
+      staticClass:
+        "p-3 pb-8 md:pb-3 space-x-4 md:space-x-0 md:space-y-4 flex md:block md:rounded-lg md:bg-gray-100",
       attrs: {
         "data-id": this.category,
         options: { animation: 200 },
@@ -27956,7 +28025,7 @@ var render = function() {
             "div",
             {
               staticClass:
-                "p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white cursor-pointer",
+                "p-3 flex flex-col justify-start items-start rounded-lg bg-white border md:border-none cursor-pointer w-64 md:w-auto h-full",
               on: {
                 click: function($event) {
                   return _vm.toggleEdit(task.id)
@@ -27964,96 +28033,112 @@ var render = function() {
               }
             },
             [
-              _c("div", { staticClass: "flex justify-between items-center" }, [
-                _c(
-                  "span",
-                  {
-                    staticClass:
-                      "px-2 p-1 text-xs font-medium text-purple-800 leading-none uppercase bg-purple-200 rounded-lg"
-                  },
-                  [_vm._v(_vm._s(task.badge))]
-                ),
-                _vm._v(" "),
-                _c("div", { staticClass: "flex justify-end items-center" }, [
-                  _c("div", { staticClass: "w-6 h-6" }, [
-                    _c("img", { attrs: { src: "", alt: "" } })
+              _c(
+                "div",
+                { staticClass: "mb-3 flex justify-between items-center" },
+                [
+                  _c(
+                    "span",
+                    {
+                      staticClass:
+                        "px-2 p-1 text-xs font-medium text-purple-800 leading-none uppercase bg-purple-200 rounded-lg"
+                    },
+                    [_vm._v(_vm._s(task.badge))]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "flex justify-end items-center" }, [
+                    _c("div", { staticClass: "w-6 h-6" }, [
+                      _c("img", { attrs: { src: "", alt: "" } })
+                    ])
                   ])
-                ])
-              ]),
+                ]
+              ),
               _vm._v(" "),
               _c(
                 "span",
                 {
-                  staticClass: "text-base font-medium text-gray-800 leading-5"
+                  staticClass:
+                    "mb-3 text-base font-medium text-gray-800 leading-5"
                 },
                 [_vm._v(_vm._s(task.title))]
               ),
               _vm._v(" "),
-              task.due_date > _vm.dueDate(new Date())
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "flex items-center text-sm font-medium text-gray-500"
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "mr-1 w-4 h-4",
-                          attrs: {
-                            fill: "none",
-                            viewBox: "0 0 24 24",
-                            stroke: "currentColor"
-                          }
-                        },
-                        [
-                          _c("path", {
+              _c("div", { staticClass: "mt-auto" }, [
+                task.due_date === null
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "flex items-center text-sm font-medium text-gray-500"
+                      },
+                      [_c("span", [_vm._v("No due date")])]
+                    )
+                  : task.due_date >= _vm.dueDate(new Date())
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "flex items-center text-sm font-medium text-gray-500"
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "mr-1 w-4 h-4",
                             attrs: {
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round",
-                              "stroke-width": "2",
-                              d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                              fill: "none",
+                              viewBox: "0 0 24 24",
+                              stroke: "currentColor"
                             }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(_vm.moment(task.due_date)))])
-                    ]
-                  )
-                : _c(
-                    "div",
-                    {
-                      staticClass:
-                        "flex items-center text-sm font-medium text-red-500"
-                    },
-                    [
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "mr-1 w-4 h-4",
-                          attrs: {
-                            fill: "none",
-                            viewBox: "0 0 24 24",
-                            stroke: "currentColor"
-                          }
-                        },
-                        [
-                          _c("path", {
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                "stroke-width": "2",
+                                d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("span", [_vm._v(_vm._s(_vm.moment(task.due_date)))])
+                      ]
+                    )
+                  : _c(
+                      "div",
+                      {
+                        staticClass:
+                          "flex items-center text-sm font-medium text-red-500"
+                      },
+                      [
+                        _c(
+                          "svg",
+                          {
+                            staticClass: "mr-1 w-4 h-4",
                             attrs: {
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round",
-                              "stroke-width": "2",
-                              d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                              fill: "none",
+                              viewBox: "0 0 24 24",
+                              stroke: "currentColor"
                             }
-                          })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(_vm.moment(task.due_date)))])
-                    ]
-                  )
+                          },
+                          [
+                            _c("path", {
+                              attrs: {
+                                "stroke-linecap": "round",
+                                "stroke-linejoin": "round",
+                                "stroke-width": "2",
+                                d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                              }
+                            })
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("span", [_vm._v(_vm._s(_vm.moment(task.due_date)))])
+                      ]
+                    )
+              ])
             ]
           ),
           _vm._v(" "),
