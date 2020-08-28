@@ -1,4 +1,4 @@
-<div class="fixed left-0 inset-y-0 hidden flex lg:flex flex-col bg-gray-100 h-full shadow-lg md:shadow-none" id="sidebar">
+<div class="fixed left-0 inset-y-0 hidden flex lg:flex flex-col bg-gray-200 h-full shadow-lg md:shadow-none" id="sidebar">
     <div class="p-4 flex flex-col h-full">
         <ul>
             <li>

@@ -1957,6 +1957,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1970,14 +1974,17 @@ __webpack_require__.r(__webpack_exports__);
       categories: [{
         id: 0,
         title: 'To do',
+        emoji: '📦',
         tasks: []
       }, {
         id: 1,
         title: 'In progress',
+        emoji: '🛠️',
         tasks: []
       }, {
         id: 2,
         title: 'Done',
+        emoji: '✅',
         tasks: []
       }],
       // Tasks array
@@ -2035,7 +2042,6 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     // Fetch tasks function
     this.fetchTasks();
-    console.log(this.tasks);
   }
 });
 
@@ -2174,6 +2180,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! moment */ "./node_modules/moment/moment.js");
 /* harmony import */ var moment__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(moment__WEBPACK_IMPORTED_MODULE_3__);
+//
+//
+//
 //
 //
 //
@@ -27678,18 +27687,50 @@ var render = function() {
     _vm._l(_vm.categories, function(category) {
       return _c(
         "div",
-        { key: category.id, staticClass: "overflow-x-scroll" },
+        {
+          key: category.id,
+          staticClass: "overflow-x-scroll md:overflow-x-auto"
+        },
         [
-          _c("div", { staticClass: "mb-4 block" }, [
-            _c(
-              "span",
-              {
-                staticClass:
-                  "text-base font-medium text-gray-500 leading-5 uppercase"
-              },
-              [_vm._v(_vm._s(category.title))]
-            )
-          ]),
+          _c(
+            "div",
+            {
+              staticClass:
+                "mb-4 space-x-4 flex justify-start items-center block"
+            },
+            [
+              category.emoji
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "p-2 flex justify-center items-center bg-white rounded-full shadow-md"
+                    },
+                    [_c("span", [_vm._v(_vm._s(category.emoji))])]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              category.title
+                ? _c(
+                    "span",
+                    {
+                      staticClass:
+                        "text-base font-medium text-gray-800 leading-5 uppercase"
+                    },
+                    [_vm._v(_vm._s(category.title))]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "span",
+                {
+                  staticClass:
+                    "text-base font-medium text-gray-500 leading-5 uppercase"
+                },
+                [_vm._v(_vm._s(category.tasks.length))]
+              )
+            ]
+          ),
           _vm._v(" "),
           _c("Task", {
             key: category.tasks.id,
@@ -27987,167 +28028,189 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "draggable",
-    {
-      staticClass:
-        "p-3 pb-8 md:pb-3 space-x-4 md:space-x-0 md:space-y-4 flex md:block md:rounded-lg md:bg-gray-100",
-      attrs: {
-        "data-id": this.category,
-        options: { animation: 200 },
-        sort: true,
-        group: "tasks",
-        tag: "div"
-      },
-      on: { change: _vm.log, add: _vm.onAdd },
-      model: {
-        value: _vm.tasksData,
-        callback: function($$v) {
-          _vm.tasksData = $$v
-        },
-        expression: "tasksData"
-      }
-    },
-    _vm._l(_vm.tasksData, function(task) {
-      return _c(
-        "div",
+    "div",
+    [
+      _c(
+        "draggable",
         {
-          key: task.id,
+          staticClass:
+            "p-3 pb-8 md:pb-3 space-x-4 md:space-x-0 md:space-y-4 flex md:block md:rounded-lg md:bg-gray-200",
           attrs: {
-            "data-id": task.id,
-            "data-title": task.title,
-            "data-description": task.description,
-            "data-badge": task.badge,
-            "data-due_date": task.due_date
+            "data-id": this.category,
+            options: { animation: 200 },
+            sort: true,
+            group: "tasks",
+            tag: "div"
+          },
+          on: { change: _vm.log, add: _vm.onAdd },
+          model: {
+            value: _vm.tasksData,
+            callback: function($$v) {
+              _vm.tasksData = $$v
+            },
+            expression: "tasksData"
           }
         },
         [
-          _c(
-            "div",
-            {
-              staticClass:
-                "p-3 flex flex-col justify-start items-start rounded-lg bg-white border md:border-none cursor-pointer w-64 md:w-auto h-full",
-              on: {
-                click: function($event) {
-                  return _vm.toggleEdit(task.id)
+          _vm._l(_vm.tasksData, function(task) {
+            return _c(
+              "div",
+              {
+                key: task.id,
+                attrs: {
+                  "data-id": task.id,
+                  "data-title": task.title,
+                  "data-description": task.description,
+                  "data-badge": task.badge,
+                  "data-due_date": task.due_date
                 }
-              }
-            },
-            [
-              _c(
-                "div",
-                { staticClass: "mb-3 flex justify-between items-center" },
-                [
-                  _c(
-                    "span",
-                    {
-                      staticClass:
-                        "px-2 p-1 text-xs font-medium text-purple-800 leading-none uppercase bg-purple-200 rounded-lg"
-                    },
-                    [_vm._v(_vm._s(task.badge))]
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "flex justify-end items-center" }, [
-                    _c("div", { staticClass: "w-6 h-6" }, [
-                      _c("img", { attrs: { src: "", alt: "" } })
+              },
+              [
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "p-3 flex flex-col justify-start items-start rounded-lg bg-white border md:border-none cursor-pointer w-64 md:w-auto h-full",
+                    on: {
+                      click: function($event) {
+                        return _vm.toggleEdit(task.id)
+                      }
+                    }
+                  },
+                  [
+                    _c(
+                      "div",
+                      { staticClass: "mb-3 flex justify-between items-center" },
+                      [
+                        _c(
+                          "span",
+                          {
+                            staticClass:
+                              "px-2 p-1 text-xs font-medium text-purple-800 leading-none uppercase bg-purple-200 rounded-lg"
+                          },
+                          [_vm._v(_vm._s(task.badge))]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "flex justify-end items-center" },
+                          [
+                            _c("div", { staticClass: "w-6 h-6" }, [
+                              _c("img", { attrs: { src: "", alt: "" } })
+                            ])
+                          ]
+                        )
+                      ]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "span",
+                      {
+                        staticClass:
+                          "mb-3 text-base font-medium text-gray-800 leading-5"
+                      },
+                      [_vm._v(_vm._s(task.title))]
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "mt-auto" }, [
+                      task.due_date === null
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "flex items-center text-sm font-medium text-gray-500"
+                            },
+                            [_c("span", [_vm._v("No due date")])]
+                          )
+                        : task.due_date >= _vm.dueDate(new Date())
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "flex items-center text-sm font-medium text-gray-500"
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "mr-1 w-4 h-4",
+                                  attrs: {
+                                    fill: "none",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round",
+                                      "stroke-width": "2",
+                                      d:
+                                        "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.moment(task.due_date)))
+                              ])
+                            ]
+                          )
+                        : _c(
+                            "div",
+                            {
+                              staticClass:
+                                "flex items-center text-sm font-medium text-red-500"
+                            },
+                            [
+                              _c(
+                                "svg",
+                                {
+                                  staticClass: "mr-1 w-4 h-4",
+                                  attrs: {
+                                    fill: "none",
+                                    viewBox: "0 0 24 24",
+                                    stroke: "currentColor"
+                                  }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round",
+                                      "stroke-width": "2",
+                                      d:
+                                        "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c("span", [
+                                _vm._v(_vm._s(_vm.moment(task.due_date)))
+                              ])
+                            ]
+                          )
                     ])
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "span",
-                {
-                  staticClass:
-                    "mb-3 text-base font-medium text-gray-800 leading-5"
-                },
-                [_vm._v(_vm._s(task.title))]
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "mt-auto" }, [
-                task.due_date === null
-                  ? _c(
-                      "div",
-                      {
-                        staticClass:
-                          "flex items-center text-sm font-medium text-gray-500"
-                      },
-                      [_c("span", [_vm._v("No due date")])]
-                    )
-                  : task.due_date >= _vm.dueDate(new Date())
-                  ? _c(
-                      "div",
-                      {
-                        staticClass:
-                          "flex items-center text-sm font-medium text-gray-500"
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "mr-1 w-4 h-4",
-                            attrs: {
-                              fill: "none",
-                              viewBox: "0 0 24 24",
-                              stroke: "currentColor"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round",
-                                "stroke-width": "2",
-                                d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("span", [_vm._v(_vm._s(_vm.moment(task.due_date)))])
-                      ]
-                    )
-                  : _c(
-                      "div",
-                      {
-                        staticClass:
-                          "flex items-center text-sm font-medium text-red-500"
-                      },
-                      [
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "mr-1 w-4 h-4",
-                            attrs: {
-                              fill: "none",
-                              viewBox: "0 0 24 24",
-                              stroke: "currentColor"
-                            }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round",
-                                "stroke-width": "2",
-                                d: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                              }
-                            })
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c("span", [_vm._v(_vm._s(_vm.moment(task.due_date)))])
-                      ]
-                    )
-              ])
-            ]
-          ),
+                  ]
+                ),
+                _vm._v(" "),
+                _c("Edit", { attrs: { task: task } })
+              ],
+              1
+            )
+          }),
           _vm._v(" "),
-          _c("Edit", { attrs: { task: task } })
+          this.tasksData.length === 0
+            ? _c("div", [_vm._v("Sorry, no tasks 🥺")])
+            : _vm._e()
         ],
-        1
+        2
       )
-    }),
-    0
+    ],
+    1
   )
 }
 var staticRenderFns = []

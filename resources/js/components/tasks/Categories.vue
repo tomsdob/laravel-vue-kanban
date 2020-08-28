@@ -1,13 +1,17 @@
 <template>
   <!-- Category container -->
   <div class="grid md:grid-cols-3 gap-y-8 md:gap-y-0 md:gap-x-8">
-    <div class="overflow-x-scroll" v-for="category in categories" :key="category.id">
-      <div class="mb-4 block">
-        <span class="text-base font-medium text-gray-500 leading-5 uppercase">{{ category.title }}</span>
+    <div class="overflow-x-scroll md:overflow-x-auto" v-for="category in categories" :key="category.id">
+      <div class="mb-4 space-x-4 flex justify-start items-center block">
+        <div v-if="category.emoji" class="p-2 flex justify-center items-center bg-white rounded-full shadow-md">
+          <span>{{ category.emoji }}</span>
+        </div>
+        <span v-if="category.title" class="text-base font-medium text-gray-800 leading-5 uppercase">{{ category.title }}</span>
+        <span class="text-base font-medium text-gray-500 leading-5 uppercase">{{ category.tasks.length }}</span>
       </div>
       <!-- Category array passed as prop with the correct tasks -->
       <!-- Category id passed as a prop for later axios use -->
-        <Task :tasks="category.tasks" :category="category.id" :key="category.tasks.id"/>
+      <Task :tasks="category.tasks" :category="category.id" :key="category.tasks.id"/>
     </div>
   </div>
 </template>
@@ -25,9 +29,9 @@ export default {
     return {
       // Category array
       categories: [
-        {id: 0, title: 'To do', tasks:[]},
-        {id: 1, title: 'In progress', tasks:[]},
-        {id: 2, title: 'Done', tasks:[]},
+        {id: 0, title: 'To do', emoji: '📦',tasks:[]},
+        {id: 1, title: 'In progress', emoji: '🛠️',tasks:[]},
+        {id: 2, title: 'Done', emoji: '✅',tasks:[]},
       ],
       // Tasks array
       tasks: {}
@@ -79,8 +83,6 @@ export default {
   mounted () {
     // Fetch tasks function
     this.fetchTasks();
-
-    console.log(this.tasks);
   }
 }
 </script>
