@@ -20,8 +20,16 @@
       <div class="p-3 space-y-3 flex flex-col justify-start items-start rounded-lg bg-white cursor-pointer"
            v-on:click="toggleEdit(task.id)"
       >
-        <div>
-          <span class="px-2 py-1 text-sm font-medium text-purple-800 leading-none bg-purple-400 rounded-full">{{ task.badge }}</span>
+        <div class="flex justify-between items-center">
+          <span class="px-2 p-1 text-xs font-medium text-purple-800 leading-none uppercase bg-purple-200 rounded-lg">{{ task.badge }}</span>
+          <div class="flex justify-end items-center">
+            <div class="w-6 h-6">
+              <img
+                  src=""
+                  alt=""
+              >
+            </div>
+          </div>
         </div>
         <span class="text-base font-medium text-gray-800 leading-5">{{ task.title }}</span>
         <!-- Checking if the due date is past today's date -->
@@ -82,7 +90,7 @@ export default {
       window.console.log(event);
     },
     moment: function(date) {
-      return moment(date).format('D MMM');
+      return moment(date).format('MMM D');
     },
     dueDate: function(date) {
       return moment(date).format('YYYY-MM-DD');

@@ -102,6 +102,22 @@
 
 /***/ }),
 
+/***/ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js":
+/*!***************************************************************!*\
+  !*** ./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js ***!
+  \***************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+/*!
+ * @license Copyright (c) 2003-2019, CKSource - Frederico Knabben. All rights reserved.
+ * For licensing, see LICENSE.md.
+ */
+!function(t,e){ true?module.exports=e():undefined}(window,function(){return function(t){var e={};function n(i){if(e[i])return e[i].exports;var r=e[i]={i:i,l:!1,exports:{}};return t[i].call(r.exports,r,r.exports,n),r.l=!0,r.exports}return n.m=t,n.c=e,n.d=function(t,e,i){n.o(t,e)||Object.defineProperty(t,e,{enumerable:!0,get:i})},n.r=function(t){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(t,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})},n.t=function(t,e){if(1&e&&(t=n(t)),8&e)return t;if(4&e&&"object"==typeof t&&t&&t.__esModule)return t;var i=Object.create(null);if(n.r(i),Object.defineProperty(i,"default",{enumerable:!0,value:t}),2&e&&"string"!=typeof t)for(var r in t)n.d(i,r,function(e){return t[e]}.bind(null,r));return i},n.n=function(t){var e=t&&t.__esModule?function(){return t.default}:function(){return t};return n.d(e,"a",e),e},n.o=function(t,e){return Object.prototype.hasOwnProperty.call(t,e)},n.p="",n(n.s=2)}([function(t,e,n){"use strict";(function(t){var n="object"==typeof t&&t&&t.Object===Object&&t;e.a=n}).call(this,n(1))},function(t,e){var n;n=function(){return this}();try{n=n||new Function("return this")()}catch(t){"object"==typeof window&&(n=window)}t.exports=n},function(t,e,n){"use strict";n.r(e);var i=function(t){var e=typeof t;return null!=t&&("object"==e||"function"==e)},r=n(0),o="object"==typeof self&&self&&self.Object===Object&&self,u=r.a||o||Function("return this")(),a=function(){return u.Date.now()},c=u.Symbol,s=Object.prototype,f=s.hasOwnProperty,l=s.toString,d=c?c.toStringTag:void 0;var p=function(t){var e=f.call(t,d),n=t[d];try{t[d]=void 0;var i=!0}catch(t){}var r=l.call(t);return i&&(e?t[d]=n:delete t[d]),r},v=Object.prototype.toString;var y=function(t){return v.call(t)},b="[object Null]",h="[object Undefined]",m=c?c.toStringTag:void 0;var g=function(t){return null==t?void 0===t?h:b:m&&m in Object(t)?p(t):y(t)};var j=function(t){return null!=t&&"object"==typeof t},O="[object Symbol]";var w=function(t){return"symbol"==typeof t||j(t)&&g(t)==O},x=NaN,$=/^\s+|\s+$/g,S=/^[-+]0x[0-9a-f]+$/i,E=/^0b[01]+$/i,T=/^0o[0-7]+$/i,_=parseInt;var D=function(t){if("number"==typeof t)return t;if(w(t))return x;if(i(t)){var e="function"==typeof t.valueOf?t.valueOf():t;t=i(e)?e+"":e}if("string"!=typeof t)return 0===t?t:+t;t=t.replace($,"");var n=E.test(t);return n||T.test(t)?_(t.slice(2),n?2:8):S.test(t)?x:+t},M="Expected a function",P=Math.max,N=Math.min;var F=function(t,e,n){var r,o,u,c,s,f,l=0,d=!1,p=!1,v=!0;if("function"!=typeof t)throw new TypeError(M);function y(e){var n=r,i=o;return r=o=void 0,l=e,c=t.apply(i,n)}function b(t){var n=t-f;return void 0===f||n>=e||n<0||p&&t-l>=u}function h(){var t=a();if(b(t))return m(t);s=setTimeout(h,function(t){var n=e-(t-f);return p?N(n,u-(t-l)):n}(t))}function m(t){return s=void 0,v&&r?y(t):(r=o=void 0,c)}function g(){var t=a(),n=b(t);if(r=arguments,o=this,f=t,n){if(void 0===s)return function(t){return l=t,s=setTimeout(h,e),d?y(t):c}(f);if(p)return clearTimeout(s),s=setTimeout(h,e),y(f)}return void 0===s&&(s=setTimeout(h,e)),c}return e=D(e)||0,i(n)&&(d=!!n.leading,u=(p="maxWait"in n)?P(D(n.maxWait)||0,e):u,v="trailing"in n?!!n.trailing:v),g.cancel=function(){void 0!==s&&clearTimeout(s),l=0,r=f=o=s=void 0},g.flush=function(){return void 0===s?c:m(a())},g};var U={name:"ckeditor",render(t){return t(this.tagName)},props:{editor:{type:Function,default:null},value:{type:String,default:""},config:{type:Object,default:()=>({})},tagName:{type:String,default:"div"},disabled:{type:Boolean,default:!1}},data:()=>({instance:null,$_lastEditorData:{type:String,default:""}}),mounted(){const t=Object.assign({},this.config);this.value&&(t.initialData=this.value),this.editor.create(this.$el,t).then(t=>{this.instance=t,t.isReadOnly=this.disabled,this.$_setUpEditorEvents(),this.$emit("ready",t)}).catch(t=>{console.error(t)})},beforeDestroy(){this.instance&&(this.instance.destroy(),this.instance=null),this.$emit("destroy",this.instance)},watch:{value(t,e){t!==e&&t!==this.$_lastEditorData&&this.instance.setData(t)},disabled(t){this.instance.isReadOnly=t}},methods:{$_setUpEditorEvents(){const t=this.instance;t.model.document.on("change:data",F(e=>{const n=this.$_lastEditorData=t.getData();this.$emit("input",n,e,t)},300)),t.editing.view.document.on("focus",e=>{this.$emit("focus",e,t)}),t.editing.view.document.on("blur",e=>{this.$emit("blur",e,t)})}}};const k={install(t){t.component("ckeditor",U)},component:U};e.default=k}]).default});
+//# sourceMappingURL=ckeditor.js.map
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -2036,13 +2052,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @ckeditor/ckeditor5-vue */ "./node_modules/@ckeditor/ckeditor5-vue/dist/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ckeditor/ckeditor5-build-classic */ "./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js");
+/* harmony import */ var _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_2__);
 //
 //
 //
@@ -2093,12 +2106,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 
+
+
+Vue.use(_ckeditor_ckeditor5_vue__WEBPACK_IMPORTED_MODULE_1___default.a);
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Edit",
   props: ["task"],
   data: function data() {
     return {
-      updateTask: this.task
+      updateTask: this.task,
+      // CKEditor
+      editor: _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_2___default.a,
+      editorData: '<p>Content of the editor.</p>',
+      editorConfig: {
+        toolbar: {
+          items: ['bold', 'italic', 'link', 'undo', 'redo']
+        }
+      }
     };
   },
   mounted: function mounted() {
@@ -2183,6 +2207,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2221,7 +2253,7 @@ __webpack_require__.r(__webpack_exports__);
       window.console.log(event);
     },
     moment: function moment(date) {
-      return moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('D MMM');
+      return moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('MMM D');
     },
     dueDate: function dueDate(date) {
       return moment__WEBPACK_IMPORTED_MODULE_3___default()(date).format('YYYY-MM-DD');
@@ -27733,37 +27765,16 @@ var render = function() {
                 })
               ]),
               _vm._v(" "),
-              _c("label", [
-                _c("textarea", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.updateTask.description,
-                      expression: "updateTask.description"
-                    }
-                  ],
-                  staticClass: "form-input w-full",
-                  attrs: {
-                    id: "ckeditor",
-                    placeholder: "Task description...",
-                    name: "description"
+              _c("ckeditor", {
+                attrs: { editor: _vm.editor, config: _vm.editorConfig },
+                model: {
+                  value: _vm.updateTask.description,
+                  callback: function($$v) {
+                    _vm.$set(_vm.updateTask, "description", $$v)
                   },
-                  domProps: { value: _vm.updateTask.description },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
-                      }
-                      _vm.$set(
-                        _vm.updateTask,
-                        "description",
-                        $event.target.value
-                      )
-                    }
-                  }
-                })
-              ]),
+                  expression: "updateTask.description"
+                }
+              }),
               _vm._v(" "),
               _c("label", [
                 _c("input", {
@@ -27867,7 +27878,8 @@ var render = function() {
                 },
                 [_vm._v("\n        Edit\n      ")]
               )
-            ]
+            ],
+            1
           )
         ]
       ),
@@ -27952,15 +27964,21 @@ var render = function() {
               }
             },
             [
-              _c("div", [
+              _c("div", { staticClass: "flex justify-between items-center" }, [
                 _c(
                   "span",
                   {
                     staticClass:
-                      "px-2 py-1 text-sm font-medium text-purple-800 leading-none bg-purple-400 rounded-full"
+                      "px-2 p-1 text-xs font-medium text-purple-800 leading-none uppercase bg-purple-200 rounded-lg"
                   },
                   [_vm._v(_vm._s(task.badge))]
-                )
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "flex justify-end items-center" }, [
+                  _c("div", { staticClass: "w-6 h-6" }, [
+                    _c("img", { attrs: { src: "", alt: "" } })
+                  ])
+                ])
               ]),
               _vm._v(" "),
               _c(
@@ -42710,7 +42728,9 @@ var app = new Vue({
 }); // CKEditor
 
 _ckeditor_ckeditor5_build_classic__WEBPACK_IMPORTED_MODULE_0___default.a.create(document.querySelector('#ckeditor'), {
-  toolbar: ['bold', 'italic', 'bulletedList', 'numberedList']
+  toolbar: {
+    items: ['bold', 'italic', 'link', 'undo', 'redo']
+  }
 }).then(function (editor) {
   console.log(editor);
 })["catch"](function (error) {

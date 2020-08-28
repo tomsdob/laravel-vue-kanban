@@ -10,7 +10,15 @@ const app = new Vue({
 // CKEditor
 ClassicEditor
 .create(document.querySelector('#ckeditor'), {
-  toolbar: [ 'bold', 'italic', 'bulletedList', 'numberedList' ]
+  toolbar: {
+    items: [
+      'bold',
+      'italic',
+      'link',
+      'undo',
+      'redo'
+    ]
+  }
 })
 .then(editor => {
   console.log(editor);

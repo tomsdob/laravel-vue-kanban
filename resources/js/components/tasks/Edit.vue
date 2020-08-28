@@ -14,14 +14,7 @@
                  v-model="updateTask.title"
           >
         </label>
-        <label>
-          <textarea class="form-input w-full"
-                    id="ckeditor"
-                    placeholder="Task description..."
-                    name="description"
-                    v-model="updateTask.description"
-          ></textarea>
-        </label>
+        <ckeditor :editor="editor" v-model="updateTask.description" :config="editorConfig"></ckeditor>
         <label>
           <input class="px-3 py-3 text-base font-normal text-gray-400 leading-6 w-full border rounded-lg focus:outline-none focus:shadow-outline"
                  placeholder="Due date..."
@@ -56,6 +49,10 @@
 
 <script>
 import axios from "axios";
+import CKEditor from "@ckeditor/ckeditor5-vue";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
+
+Vue.use( CKEditor );
 
 export default {
   name: "Edit",
@@ -65,6 +62,20 @@ export default {
   data: function() {
     return {
       updateTask: this.task,
+      // CKEditor
+      editor: ClassicEditor,
+      editorData: '<p>Content of the editor.</p>',
+      editorConfig: {
+        toolbar: {
+          items: [
+            'bold',
+            'italic',
+            'link',
+            'undo',
+            'redo'
+          ]
+        }
+      }
     }
   },
   mounted() {
